@@ -82,7 +82,8 @@ class TeachersController extends AppController
 
                 if ($hasher->check($data['password'], $teacher->password)) {
                     $this->request->getSession()->write('Auth', $teacher);
-                    return $this->redirect(['controller' => 'Teachers', 'action' => 'index']);
+                    // Nếu đăng nhập thành công
+                    return $this->redirect('/');
                 } else {
                     $this->Flash->error(__('Sai mật khẩu'));
                 }

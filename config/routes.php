@@ -6,10 +6,7 @@ return function (RouteBuilder $routes): void {
     $routes->setRouteClass(DashedRoute::class);
 
     $routes->scope('/', function (RouteBuilder $builder): void {
-        $builder->connect('/', ['controller' => 'Teachers', 'action' => 'login']);
-
-        $builder->connect('/pages/*', 'Pages::display');
-
+        $builder->connect('/', ['controller' => 'Dashboard', 'action' => 'index']);
         $builder->fallbacks();
     });
 };
