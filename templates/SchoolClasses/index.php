@@ -7,6 +7,18 @@
 <div class="schoolClasses index content">
     <?= $this->Html->link(__('New School Class'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('School Classes') ?></h3>
+    <div class="search-bar" style="margin-bottom: 20px;">
+        <?= $this->Form->create(null, ['type' => 'get', 'style' => 'display: flex; gap: 10px; align-items: center;']) ?>
+        <?= $this->Form->control('keyword', [
+            'label' => false,
+            'placeholder' => 'Nhập từ khóa tìm kiếm...',
+            'value' => $this->request->getQuery('keyword'), // Giữ lại từ khóa trên ô nhập khi load lại trang
+            'style' => 'margin-bottom: 0; min-width: 300px;'
+        ]) ?>
+        <?= $this->Form->button(__('Tìm kiếm'), ['style' => 'margin-bottom: 0;']) ?>
+        <?= $this->Html->link(__('Hủy'), ['action' => 'index'], ['class' => 'button button-outline', 'style' => 'margin-bottom: 0;']) ?>
+        <?= $this->Form->end() ?>
+    </div>
     <div class="table-responsive">
         <table>
             <thead>
@@ -15,8 +27,6 @@
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('teacher') ?></th>
                     <th><?= $this->Paginator->sort('quantity_student') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -25,10 +35,8 @@
                 <tr>
                     <td><?= $this->Number->format($schoolClass->id) ?></td>
                     <td><?= h($schoolClass->name) ?></td>
-                    <td><?= $this->Number->format($schoolClass->teacher) ?></td>
-                    <td><?= $this->Number->format($schoolClass->quantity_student) ?></td>
-                    <td><?= h($schoolClass->created) ?></td>
-                    <td><?= h($schoolClass->modified) ?></td>
+                    <td><?= $schoolClass->has('teacher') ? h($schoolClass->teacher->username) : '' ?></td>
+                    <td><?= $this->Number->format($schoolClass->student_count ?? 0) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $schoolClass->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $schoolClass->id]) ?>

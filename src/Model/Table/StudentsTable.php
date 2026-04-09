@@ -16,8 +16,15 @@ class StudentsTable extends Table
         $this->setTable('students');
         $this->setDisplayField('username');
         $this->setPrimaryKey('id');
+        $this->belongsTo('SchoolClasses', [
+            'foreignKey' => 'school_class_id'
+        ]);
 
         $this->addBehavior('Timestamp');
+        
+        $this->addBehavior('CounterCache', [
+            'SchoolClasses' => ['student_count']
+        ]);
     }
 
     public function validationDefault(Validator $validator): Validator
@@ -40,15 +47,15 @@ class StudentsTable extends Table
             ->notEmptyString('age');
 
         $validator
-            ->integer('class')
-            ->requirePresence('class', 'create')
-            ->notEmptyString('class');
+            ->integer('school_class_id')
+            ->requirePresence('school_class_id', 'create')
+            ->notEmptyString('school_class_id');
 
         $validator
-            ->scalar('addrest')
-            ->maxLength('addrest', 500)
-            ->requirePresence('addrest', 'create')
-            ->notEmptyString('addrest');
+            ->scalar('address') 
+            ->maxLength('address', 500)
+            ->requirePresence('address', 'create')
+            ->notEmptyString('address');
 
         $validator
             ->integer('phone_number')
@@ -63,7 +70,7 @@ class StudentsTable extends Table
     }
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-    $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
+        $rules->add($rules->existsIn(['school_class_id'], 'SchoolClasses'), ['errorField' => 'school_class_id']);
 
         return $rules;
     }

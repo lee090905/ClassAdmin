@@ -31,10 +31,6 @@
                     <td><?= $this->Number->format($teacher->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Class') ?></th>
-                    <td><?= $this->Number->format($teacher->class) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Phone Number') ?></th>
                     <td><?= $this->Number->format($teacher->phone_number) ?></td>
                 </tr>

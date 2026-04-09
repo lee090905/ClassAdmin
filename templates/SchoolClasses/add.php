@@ -18,8 +18,12 @@
                 <legend><?= __('Add School Class') ?></legend>
                 <?php
                     echo $this->Form->control('name');
-                    echo $this->Form->control('teacher');
-                    echo $this->Form->control('quantity_student');
+                    echo $this->Form->control('teacher_id', [
+                        'options' => $teachers,
+                        'label' => 'Giáo viên quản lý'
+                    ]);
+
+echo $this->Form->control('student_count');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

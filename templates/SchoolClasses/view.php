@@ -28,11 +28,10 @@
                 </tr>
                 <tr>
                     <th><?= __('Teacher') ?></th>
-                    <td><?= $this->Number->format($schoolClass->teacher) ?></td>
-                </tr>
+                    <td><?= $schoolClass->has('teacher') ? h($schoolClass->teacher->username) : '' ?></td>                </tr>
                 <tr>
                     <th><?= __('Quantity Student') ?></th>
-                    <td><?= $this->Number->format($schoolClass->quantity_student) ?></td>
+                    <td><?= $this->Number->format($schoolClass->student_count ?? 0) ?> Học sinh</td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>

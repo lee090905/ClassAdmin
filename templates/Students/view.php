@@ -19,32 +19,32 @@
             <h3><?= h($student->username) ?></h3>
             <table>
                 <tr>
+                    <th><?= __('Id') ?></th>
+                    <td><?= $this->Number->format($student->id) ?></td>
+                </tr>
+                <tr>
                     <th><?= __('Username') ?></th>
                     <td><?= h($student->username) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Addrest') ?></th>
-                    <td><?= h($student->addrest) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Email') ?></th>
-                    <td><?= h($student->email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($student->id) ?></td>
+                    <th><?= __('Class') ?></th>
+                    <td><?= $student->has('schoolClass') ? h($student->schoolClass->name) : '' ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Age') ?></th>
                     <td><?= $this->Number->format($student->age) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Class') ?></th>
-                    <td><?= $this->Number->format($student->class) ?></td>
+                    <th><?= __('Address') ?></th>
+                    <td><?= h($student->address) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Phone Number') ?></th>
                     <td><?= $this->Number->format($student->phone_number) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Email') ?></th>
+                    <td><?= h($student->email) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created') ?></th>

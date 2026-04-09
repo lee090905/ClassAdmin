@@ -11,7 +11,6 @@ class Teacher extends Entity
     protected array $_accessible = [
         'username' => true,
         'password' => true,
-        'class' => true,
         'addrest' => true,
         'phone_number' => true,
         'email' => true,

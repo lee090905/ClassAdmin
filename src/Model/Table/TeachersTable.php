@@ -35,11 +35,6 @@ class TeachersTable extends Table
             ->notEmptyString('password');
 
         $validator
-            ->integer('class')
-            ->requirePresence('class', 'create')
-            ->notEmptyString('class');
-
-        $validator
             ->scalar('addrest')
             ->maxLength('addrest', 500)
             ->requirePresence('addrest', 'create')

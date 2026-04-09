@@ -8,8 +8,8 @@ class SchoolClass extends Entity
 {
     protected array $_accessible = [
         'name' => true,
-        'teacher' => true,
-        'quantity_student' => true,
+        'teacher_id' => true,
+        'student_count' => true,
         'created' => true,
         'modified' => true,
     ];

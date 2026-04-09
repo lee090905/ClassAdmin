@@ -28,5 +28,12 @@ class AppController extends Controller
             return $this->redirect(['controller' => 'Teachers', 'action' => 'login']);
         }
     }
+
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        $this->loadComponent('Flash');
+    }
 }
 
